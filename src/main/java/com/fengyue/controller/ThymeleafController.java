@@ -1,4 +1,4 @@
-package com.xinan.example.fengyue.controller;
+package com.fengyue.controller;
 
 
 import org.springframework.stereotype.Controller;

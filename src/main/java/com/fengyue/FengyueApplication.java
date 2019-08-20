@@ -1,4 +1,4 @@
-package com.xinan.example.fengyue;
+package com.fengyue;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

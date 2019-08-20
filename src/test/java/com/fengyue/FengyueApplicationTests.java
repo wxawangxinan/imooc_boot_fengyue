@@ -1,4 +1,4 @@
-package com.xinan.example.fengyue;
+package com.fengyue;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

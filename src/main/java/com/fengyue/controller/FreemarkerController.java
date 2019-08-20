@@ -1,13 +1,11 @@
-package com.xinan.example.fengyue.controller;
+package com.fengyue.controller;
 
 
-import com.xinan.example.fengyue.util.PropertiesConfig;
+import com.fengyue.util.PropertiesConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
-
-import javax.management.modelmbean.ModelMBean;
 
 @Controller
 @RequestMapping("ftl")
