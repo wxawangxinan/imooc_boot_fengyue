@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>this is error page</title>
+</head>
+<body>
+    <h1>your code is error!! plase check it</h1>
+    <div th:text="${url}"></div>
+    <div th:text="${exception.message}"></div>
+</body>
+</html>
