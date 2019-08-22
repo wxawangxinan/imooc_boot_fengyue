@@ -52,6 +52,18 @@
 			<optional>true</optional>
 		</dependency>
 
+		<!--	导入freemarker依赖	-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-freemarker</artifactId>
+		</dependency>
+
+		<!--导入thymeleaf 依赖-->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+
 <!--		&lt;!&ndash;  整合mybatis  &ndash;&gt;-->
 <!--		&lt;!&ndash;mybatis&ndash;&gt;-->
 <!--		<dependency>-->
