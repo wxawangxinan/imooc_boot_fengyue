@@ -5,16 +5,43 @@
 <generatorConfiguration>
     <!-- 数据库驱动:选择你的本地硬盘上面的数据库驱动包-->
     <classPathEntry  location="C:\Users\admin\.m2\repository\mysql\mysql-connector-java\8.0.17\mysql-connector-java-8.0.17.jar"/>
-    <context id="DB2Tables"  targetRuntime="MyBatis3">
-<!--        type="src.test.java.com.fengyue.MyCommentGenerator"-->
-        <commentGenerator>
+<!--    <classPathEntry  location="C:\Users\admin\.m2\repository\org\postgresql\postgresql\42.2.5\postgresql-42.2.5.jar"/>-->
+    <context id="DB2Tables"  targetRuntime="MyBatis3Simple">
+<!--        type="src.test.java.com.fengyue.MyDefaultGenerator"-->
+        <commentGenerator type="com.fengyue.config.MyDefaultGenerator">
             <property name="suppressDate" value="true"/>
             <!-- 是否去除自动生成的英文注释 true：是 ： false:否 -->
             <property name="suppressAllComments" value="true"/>
         </commentGenerator>
-        <!--数据库连接驱动类,URL，用户名、密码 -->
-        <jdbcConnection driverClass="com.mysql.cj.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/spring_boot?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC" userId="root" password="123456">
+
+  <!--      <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="tk.mybatis.mapper.common.Mapper,tk.mybatis.mapper.hsqldb.HsqldbMapper"/>
+            <property name="caseSensitive" value="true"/>
+            <property name="forceAnnotation" value="true"/>
+            <property name="beginningDelimiter" value="`"/>
+            <property name="endingDelimiter" value="`"/>
+            &lt;!&ndash;配置是否启用lombok, 支持如下6种注解&ndash;&gt;
+            &lt;!&ndash;当配置 Data 后，Getter Setter ToString EqualsAndHashCode 会被忽略&ndash;&gt;
+            <property name="lombok" value="Getter,Setter,Data,ToString,Accessors,EqualsAndHashCode"/>
+        </plugin>-->
+
+        <!-- mysql数据库连接驱动类,URL，用户名、密码 -->
+        <!--本地数据库-->
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://localhost:3306/spring_boot?useUnicode=true&amp;useJDBCCompliantTimezoneShift=true&amp;useLegacyDatetimeCode=false&amp;serverTimezone=UTC"
+                userId="root"
+                password="123456">
         </jdbcConnection>
+        <!--postgresql数据库-->
+ <!--       <jdbcConnection
+                driverClass="org.postgresql.Driver"
+                connectionURL="jdbc:postgresql://192.168.1.153:5432/apps"
+                userId="postgres"
+                password="18161816">
+        </jdbcConnection>-->
+
+
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
@@ -33,20 +60,25 @@
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
+
         <!-- 生成XML映射文件的包名和位置-->
-        <sqlMapGenerator targetPackage="com.fengyue.mapper.xml" targetProject="src/main/java">
+        <sqlMapGenerator targetPackage="com.fengyue.threemapper.xml" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
+
         <!-- 生成DAO接口的包名和位置
                 type="ANNOTATEDMAPPER",生成Java Model 和基于注解的Mapper对象
                 type="MIXEDMAPPER",生成基于注解的Java Model 和相应的Mapper对象
                 type="XMLMAPPER",生成SQLMap XML文件和独立的Mapper接口
         -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fengyue.mapper" targetProject="src/main/java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.fengyue.threemapper" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
+            <!--  为生成的接口，添加父接口  -->
+            <!--<property name="rootInterface" value=".................."/>-->
         </javaClientGenerator>
         <!-- 要生成的表 tableName是数据库中的表名或视图名 domainObjectName是实体类名-->
         <!--<table tableName="boot_t_student_" domainObjectName="Student"></table>-->
-        <table tableName="boot_t_class_" domainObjectName="Class" enableCountByExample="false" enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"></table>
+        <table tableName="boot_t_class_" domainObjectName="Class" enableCountByExample="false"
+               enableUpdateByExample="false" enableDeleteByExample="false" enableSelectByExample="false" selectByExampleQueryId="false"/>
     </context>
 </generatorConfiguration>

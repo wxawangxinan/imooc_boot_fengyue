@@ -14,6 +14,9 @@ import org.mybatis.generator.api.dom.java.Parameter;
 import org.mybatis.generator.api.dom.java.TopLevelClass;
 import org.mybatis.generator.internal.DefaultCommentGenerator;
 
+/**
+ * 生成实体类带有备注
+ */
 public class MyDefaultGenerator extends DefaultCommentGenerator {
 
     private Properties properties;
