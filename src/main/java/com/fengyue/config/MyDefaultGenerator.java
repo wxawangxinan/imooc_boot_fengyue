@@ -16,6 +16,8 @@ import org.mybatis.generator.internal.DefaultCommentGenerator;
 
 /**
  * 生成实体类带有备注
+ *
+ * 测试命令行合并分支
  */
 public class MyDefaultGenerator extends DefaultCommentGenerator {
 
