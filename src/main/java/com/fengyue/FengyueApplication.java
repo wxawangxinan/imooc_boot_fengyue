@@ -18,6 +18,7 @@ import tk.mybatis.spring.annotation.MapperScan;
 public class FengyueApplication {
 
 	public static void main(String[] args) {
+		System.setProperty("es.set.netty.runtime.available.processors", "false");
 		SpringApplication.run(FengyueApplication.class, args);
 	}
 

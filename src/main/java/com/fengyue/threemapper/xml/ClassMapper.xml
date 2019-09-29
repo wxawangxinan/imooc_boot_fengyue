@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengyue.threemapper.ClassMapper">
+  <resultMap id="BaseResultMap" type="com.fengyue.pojo.Class">
+    <id column="id_" jdbcType="VARCHAR" property="id" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from boot_t_class_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fengyue.pojo.Class">
+    insert into boot_t_class_ (id_, name_)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <update id="updateByPrimaryKey" parameterType="com.fengyue.pojo.Class">
+    update boot_t_class_
+    set name_ = #{name,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select id_, name_
+    from boot_t_class_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <select id="selectAll" resultMap="BaseResultMap">
+    select id_, name_
+    from boot_t_class_
+  </select>
+</mapper>

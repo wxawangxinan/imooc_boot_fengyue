@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengyue.threemapper.ThreeMapper">
+  <resultMap id="BaseResultMap" type="com.fengyue.pojo.Three">
+    <id column="id_" jdbcType="VARCHAR" property="id" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, name_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from t_three_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from t_three_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fengyue.pojo.Three">
+    insert into t_three_ (id_, name_)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fengyue.pojo.Three">
+    insert into t_three_
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="name != null">
+        name_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fengyue.pojo.Three">
+    update t_three_
+    <set>
+      <if test="name != null">
+        name_ = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fengyue.pojo.Three">
+    update t_three_
+    set name_ = #{name,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.fengyue.mapper.StudentMapper">
+  <resultMap id="BaseResultMap" type="com.fengyue.pojo.Student">
+    <id column="id_" jdbcType="VARCHAR" property="id" />
+    <result column="name_" jdbcType="VARCHAR" property="name" />
+    <result column="grade_id_" jdbcType="VARCHAR" property="gradeId" />
+    <result column="class_id_" jdbcType="VARCHAR" property="classId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id_, name_, grade_id_, class_id_
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from boot_t_student_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    delete from boot_t_student_
+    where id_ = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.fengyue.pojo.Student">
+    insert into boot_t_student_ (id_, name_, grade_id_, 
+      class_id_)
+    values (#{id,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{gradeId,jdbcType=VARCHAR}, 
+      #{classId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.fengyue.pojo.Student">
+    insert into boot_t_student_
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id_,
+      </if>
+      <if test="name != null">
+        name_,
+      </if>
+      <if test="gradeId != null">
+        grade_id_,
+      </if>
+      <if test="classId != null">
+        class_id_,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        #{classId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.fengyue.pojo.Student">
+    update boot_t_student_
+    <set>
+      <if test="name != null">
+        name_ = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="gradeId != null">
+        grade_id_ = #{gradeId,jdbcType=VARCHAR},
+      </if>
+      <if test="classId != null">
+        class_id_ = #{classId,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id_ = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.fengyue.pojo.Student">
+    update boot_t_student_
+    set name_ = #{name,jdbcType=VARCHAR},
+      grade_id_ = #{gradeId,jdbcType=VARCHAR},
+      class_id_ = #{classId,jdbcType=VARCHAR}
+    where id_ = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

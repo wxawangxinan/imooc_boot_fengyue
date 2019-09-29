@@ -1,17 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
-	<parent>
+	<modelVersion>4.0.0</modelVersion>	<!-- 指定当前pom的版本 -->
+	<parent>  <!--用于子模块中，对于父模块的继承-->
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>2.1.7.RELEASE</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.xinan.example</groupId>		<!-- 项目名 -->
-	<artifactId>fengyue</artifactId>	<!--模块名-->
+	<groupId>com.xinan.example</groupId>		<!-- 项目的包名(maven属于哪个具体项目) -->
+	<artifactId>fengyue</artifactId>	<!--模块名 （项目的具体模块）-->
 	<version>0.0.1-SNAPSHOT</version>	<!--版本号-->
-	<packaging>jar</packaging>		<!--打包类型，默认jar-->
+	<packaging>jar</packaging>		<!--打包类型，默认jar （还有var  zip  pom等方式）-->
+
+	<modules></modules> <!--聚合继承多个maven项目，可以一起编译-->
 
 	<name>fengyue</name>
 	<description>Demo project for Spring Boot</description>
@@ -20,7 +22,24 @@
 		<java.version>1.8</java.version>
 	</properties>
 
+	<!--<dependency>
+        <groupId></groupId>
+        <artifactId></artifactId>
+        <version></version>
+        <type></type>
+        依赖范围    maven提供了三种class Path（编译/测试/运行）,定义存在于哪种class path中
+        	compile(三种范围有效) provided（编译和测试有效）runtime（测试和运行） test(测试时有效)
+        	system（编译和测试，与本地相关，移植性差）import（只存在于dependencyManagement中，表示从其他项目导入进来的依赖）
+        <scope>test</scope>
+        <optional></optional>  &lt;!&ndash;依赖是否可选(设置子项目是否集成该依赖) 默认false&ndash;&gt;
+        <exclusions><exclusion></exclusion></exclusions>  &lt;!&ndash;排除依赖的列表&ndash;&gt;
+    </dependency>-->
+
+	<dependencyManagement></dependencyManagement>	<!--依赖管理，定义子项目需要继承的依赖 本项目并不调用-->
+
+
 	<dependencies>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter</artifactId>
@@ -36,6 +55,7 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
+
 
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -102,16 +122,49 @@
 			<version>1.2.3</version>
 		</dependency>
 
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+		</dependency>
+
 <!--		&lt;!&ndash; 整合redis &ndash;&gt;-->
 <!--		<dependency>-->
 <!--			<groupId>org.springframework.boot</groupId>-->
 <!--			<artifactId>spring-boot-starter-data-redis</artifactId>-->
 <!--		</dependency>-->
 
+		<!--elastic search启动器-->
+		<!--		<dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-starter-data-elasticsearch</artifactId>
+            </dependency>
+
+        <dependency>
+                <groupId>org.elasticsearch</groupId>
+                <artifactId>elasticsearch</artifactId>
+                <version>7.3.2</version>
+            </dependency>
+            <dependency>
+                <groupId>org.elasticsearch.client</groupId>
+                <artifactId>transport</artifactId>
+                <version>7.3.2</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework.data</groupId>
+                <artifactId>spring-data-elasticsearch</artifactId>
+            </dependency>
+    -->
+		<!--<dependency>
+			<groupId>org.apache.logging.log4j</groupId>
+			<artifactId>log4j</artifactId>
+			<version>RELEASE</version>
+		</dependency>-->
 	</dependencies>
 
+	<!--对构建项目提供支持-->
 	<build>
-		<plugins>
+		<plugins> <!--插件能力-->
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
